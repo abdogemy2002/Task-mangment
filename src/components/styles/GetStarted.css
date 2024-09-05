@@ -1,0 +1,58 @@
+.get-started-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for consistency */
+    color: #f8f9fa; /* Light text color to match the theme */
+    text-align: center;
+  }
+  
+  .get-started-container h1 {
+    color: #fff; /* White text for headings */
+    margin-bottom: 1rem;
+    font-size: 2.5rem; /* Consistent with other headings */
+  }
+  
+  .get-started-container p {
+    margin-bottom: 2rem;
+    font-size: 1.25rem; /* Consistent font size */
+    color: rgba(255, 255, 255, 0.8); /* Slightly lighter text color */
+  }
+  
+  .steps {
+    margin-top: 2rem;
+  }
+  
+  .step {
+    margin-bottom: 2rem;
+  }
+  
+  .step h2 {
+    color: #02cc89; /* Accent color for step headings */
+    font-size: 1.75rem; /* Consistent with other headings */
+  }
+  
+  .step p {
+    font-size: 1rem; /* Consistent font size */
+  }
+  
+  .btn-primary {
+    background-image: linear-gradient(135deg, #02cc89, #01afd1);
+    color: white;
+    border: none;
+    margin: 3px;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #00fca84c, #1cd9ff58);
+    color: rgba(53, 53, 53, 0.853);
+  }
+  

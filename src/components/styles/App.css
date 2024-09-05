@@ -1,0 +1,42 @@
+/* Global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: scroll; /* Reserve space for scrollbar */
+  background-color: #e5e5e55e; /* A darker blue */
+  height: 100vh;
+  color: rgb(0, 0, 0);
+}
+
+/* Scrollbar styles for WebKit browsers */
+::-webkit-scrollbar {
+  width: 0px; 
+  z-index: -11;
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* Handle color */
+  border-radius: 50px; /* Rounded corners */
+}
+
+/* Optional: Hover effect for scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar style for Firefox */
+html {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+}
+
+/* Container with fixed size and scrollbar */
+.scrollable-container {
+  max-height: 80vh; /* Adjust height as needed */
+  overflow:hidden; /* Add scrollbar if content exceeds the container */
+}

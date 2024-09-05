@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "id": "acf1",
+      "name": "user1",
+      "password": "123123"
+    },
+    {
+      "id": "7b49",
+      "name": "new user1",
+      "password": "123123"
+    },
+    {
+      "id": "20c4",
+      "name": "new user2",
+      "password": "123123"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "6e38",
+      "task": "Organize team meeting",
+      "description": "Schedule and organize a meeting with the team for project updates.",
+      "priority": "High",
+      "status": "Pending",
+      "dueDate": "2024-08-18",
+      "dateModified": "2024-08-08",
+      "userId": "acf1"
+    },
+    {
+      "id": "7a42",
+      "task": "Test New Features",
+      "description": "Test the new features implemented by the development team to ensure they work as expected.",
+      "priority": "High",
+      "status": "Pending",
+      "dueDate": "2024-08-15",
+      "dateModified": "2024-08-12",
+      "userId": "acf1"
+    },
+    {
+      "id": "fbd0",
+      "task": "new task edit",
+      "description": "something goes here edit ",
+      "priority": "High",
+      "status": "Pending",
+      "dueDate": "2024-08-29",
+      "dateModified": "2024-08-17",
+      "userId": "acf1"
+    }
+  ]
+}
