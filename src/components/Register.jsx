@@ -23,31 +23,55 @@ const Register = () => {
       password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
     }),
     onSubmit: (values) => {
-      // Check if username is already taken before submitting
-      axios.get('http://localhost:3000/users')
-        .then(response => {
-          const userExists = response.data.some(user => user.name === values.name);
-          if (userExists) {
-            toast.error('Username is already taken. Please choose a different one.');
-            return;
-          }
+      // Fetch existing users and check if the username is already taken
+      axios.get('https://api.jsonbin.io/v3/b/66e5dac3e41b4d34e4303818', {
+        headers: {
+          'X-Master-Key': '$2a$10$bq9ZR67rhOSPkUb8Mo2Yv.7HSltAjDzppL5QPHThIYluD2QkA6XWG' // Replace with your actual API key
+        }
+      })
+      .then(response => {
+        const users = response.data.record.users || [];  // Adjust to access the users array
 
-          // Proceed with registration if username is not taken
-          axios.post('http://localhost:3000/users', values)
-            .then(response => {
-              setIsRegistered(true);
-              setUserId(response.data.id); 
-              setUsername(response.data.name); 
-              toast.success('Registration successful!');
-              navigate('/tasks');
-            })
-            .catch(error => {
-              toast.error(`Error registering user: ${error.message}`);
-            });
+        // Check if the username is already taken
+        const userExists = users.some(user => user.name === values.name);
+        if (userExists) {
+          toast.error('Username is already taken. Please choose a different one.');
+          return;
+        }
+
+        // If username is not taken, proceed with registration
+        const newUser = {
+          id: Math.random().toString(36).substring(2, 10),  // Generate a random ID
+          name: values.name,
+          password: values.password,
+        };
+
+        // Add the new user to the existing users array
+        const updatedUsers = [...users, newUser];
+
+        // Update the bin with the new user data
+        axios.put('https://api.jsonbin.io/v3/b/66e5dac3e41b4d34e4303818', {
+          users: updatedUsers,  // Ensure the correct key ('users')
+          tasks: response.data.record.tasks  // Keep the tasks unchanged
+        }, {
+          headers: {
+            'X-Master-Key': '$2a$10$bq9ZR67rhOSPkUb8Mo2Yv.7HSltAjDzppL5QPHThIYluD2QkA6XWG'  // Replace with your actual API key
+          }
+        })
+        .then(() => {
+          setIsRegistered(true);
+          setUserId(newUser.id);
+          setUsername(newUser.name);
+          toast.success('Registration successful!');
+          navigate('/tasks');
         })
         .catch(error => {
-          toast.error(`Error checking username availability: ${error.message}`);
+          toast.error(`Error registering user: ${error.message}`);
         });
+      })
+      .catch(error => {
+        toast.error(`Error checking username availability: ${error.message}`);
+      });
     },
   });
 
